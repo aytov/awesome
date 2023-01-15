@@ -1,6 +1,6 @@
 {
   "name": "nodejsexpressapp",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Start building your next Node.js Express app on IBM Cloud.",
   "private": true,
   "engines": {
