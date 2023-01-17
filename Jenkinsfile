@@ -47,9 +47,9 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', '96a9e243-0ce6-4a78-b18d-b846ca3939e3') {
                         echo "Building custom image"
                         customImage = docker.build("aytovan/awesome:${version}")
+                        customImage.push()
+                        customImage.push('latest')
                     }
-                    customImage.push()
-                    customImage.push('latest')
                 }
             }
         }
