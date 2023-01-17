@@ -11,16 +11,16 @@ pipeline {
     stages {
         stage('Checkout') {
         steps {
+            deleteDir()
             checkout scmGit(
                 branches: [[name: 'main']],
                 extensions: scm.extensions + [[$class: 'CloneOption', noTags: false, reference: '', shallow: true]],
-                userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-plugin']])
+                userRemoteConfigs: [[credentialsId: '6ecb9821-0237-4fdb-9a08-18baaa9cc5f8', url: 'https://github.com/aytov/awesome.git']])
 
-            deleteDir()
-            withCredentials([gitUsernamePassword(credentialsId: '6ecb9821-0237-4fdb-9a08-18baaa9cc5f8')]) {
-                sh("git clone -b main https://github.com/aytov/awesome.git")
-                sh("git fetch --tags")
-            }
+//             deleteDir()
+//             withCredentials([gitUsernamePassword(credentialsId: '6ecb9821-0237-4fdb-9a08-18baaa9cc5f8')]) {
+//                 sh("git clone -b main https://github.com/aytov/awesome.git")
+//             }
 
             sh "ls -lat"
         }
