@@ -4,12 +4,15 @@ def version = ''
 
 pipeline {
     agent any
+    options {
+        timestamps()
+    }
 
-//     stages {
+    stages {
 //         stage('Checkout') {
 //         steps {
 //             deleteDir()
-//             checkout scm
+
 //             checkout scmGit(
 //                 branches: [[name: 'main']],
 //                 extensions: scm.extensions + [[$class: 'CloneOption', noTags: false, reference: '', shallow: true]],
@@ -46,7 +49,7 @@ pipeline {
                         echo "Building custom image"
                         customImage = docker.build("aytovan/awesome:v1.0.3")
                         customImage.push()
-                        customImage.push('latest')
+                        customImage.push('latest'
                     }
                 }
             }
