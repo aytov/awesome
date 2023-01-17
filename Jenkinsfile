@@ -29,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    version = sh(returnStdout: true, script: "git describe --tags --always").trim()
+                    version = sh(returnStdout: true, script: "git describe --tags").trim()
                 }
                 sh "npm ci"
                 sh 'npm version | grep "$(git describe --tags | sed "s/-.*//")" && echo "package version in sync with git tags" || (echo "[ERROR] FAILURE: Package version is _OUT_OF_SYNC_ with git tags" && exit 99)'
