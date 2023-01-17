@@ -8,11 +8,11 @@ pipeline {
         timestamps()
     }
 
-    stages {
-        stage('Checkout') {
-        steps {
-            deleteDir()
-            checkout scm
+//     stages {
+//         stage('Checkout') {
+//         steps {
+//             deleteDir()
+//             checkout scm
 //             checkout scmGit(
 //                 branches: [[name: 'main']],
 //                 extensions: scm.extensions + [[$class: 'CloneOption', noTags: false, reference: '', shallow: true]],
@@ -23,9 +23,9 @@ pipeline {
 //                 sh("git clone -b main https://github.com/aytov/awesome.git")
 //             }
 
-            sh "ls -lat"
-        }
-    }
+//             sh "ls -lat"
+//         }
+//     }
 
         stage('Build') {
             steps {
