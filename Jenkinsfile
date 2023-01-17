@@ -46,7 +46,7 @@ pipeline {
                         echo "Building custom image"
                         customImage = docker.build("aytovan/awesome:v1.0.3")
                         customImage.push()
-                        customImage.push('latest'
+                        customImage.push('latest')
                     }
                 }
             }
