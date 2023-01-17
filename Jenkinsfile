@@ -6,23 +6,6 @@ pipeline {
     agent any
 
     stages {
-//         stage('Checkout') {
-//         steps {
-//             deleteDir()
-//             checkout scmGit(
-//                 branches: [[name: 'main']],
-//                 extensions: scm.extensions + [[$class: 'CloneOption', noTags: false, reference: '', shallow: true]],
-//                 userRemoteConfigs: [[credentialsId: '6ecb9821-0237-4fdb-9a08-18baaa9cc5f8', url: 'https://github.com/aytov/awesome.git']])
-
-//             deleteDir()
-//             withCredentials([gitUsernamePassword(credentialsId: '6ecb9821-0237-4fdb-9a08-18baaa9cc5f8')]) {
-//                 sh("git clone -b main https://github.com/aytov/awesome.git")
-//             }
-
-//             sh "ls -lat"
-//         }
-//     }
-
         stage('Build') {
             steps {
                 script {
@@ -43,7 +26,7 @@ pipeline {
                     def customImage
                     docker.withRegistry('https://registry.hub.docker.com', '96a9e243-0ce6-4a78-b18d-b846ca3939e3') {
                         echo "Building custom image"
-                        customImage = docker.build("aytovan/awesome:v1.0.3")
+                        customImage = docker.build("aytovan/awesome:${version}")
                         customImage.push()
                         customImage.push('latest')
                     }
