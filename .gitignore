@@ -8,3 +8,6 @@ credentials.json
 localdev-config.json
 .nyc*
 .github/
+lib/
+.idea/
+*.iml
